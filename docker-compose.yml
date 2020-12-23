@@ -7,7 +7,7 @@ services:
     build: stock/
     entrypoint: go run /go/src/github.com/ryuzaki01/go-ms/stock/main.go
     ports:
-      - "3000:80"
+      - "3000:3000"
     environment:
       - APP_SECRET
     container_name: 'stock'
@@ -16,7 +16,7 @@ services:
 
   encrypt:
     build: encrypt/
-    entrypoint: go run /go/src/github.com/ryuzaki01/go-ms/encrypt/main.gos
+    entrypoint: go run /go/src/github.com/ryuzaki01/go-ms/encrypt/main.go
     ports:
       - "3001"
     environment:

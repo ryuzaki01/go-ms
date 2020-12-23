@@ -32,7 +32,7 @@ export ALPHA_VANTAGE_KEY=
 
 ```
 cd ~/src/github.com/ryuzaki01/go-ms
-docker-compose --x-networking up -d
+docker-compose up -d
 ```
 
 ### 5. Access with a browser (specify the IP address of the VM)
