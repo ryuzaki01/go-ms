@@ -9,16 +9,16 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/ryuzaki01/go-ms/encrypt/app/misc"
+	"github.com/ryuzaki01/go-ms/stock/app/misc"
 )
 
 func defaultConfig() Config {
 	return Config{
-		Name:          "GoMS-Encrypt",
-		Port:          3001,
+		Name:          "GoMS-Stock",
+		Port:          3000,
 		LogLevel:      4,
 		AccessLog:     true,
-		Secret: "",
+		AlphaVantageKey: "",
 	}
 }
 
@@ -44,7 +44,7 @@ func environmentConfig() Config {
 		Port:          misc.ParseUint16(os.Getenv("APP_PORT")),
 		LogLevel:      misc.Atoi(os.Getenv("APP_LOG_LEVEL")),
 		AccessLog:     misc.ParseBool(os.Getenv("APP_ACCESS_LOG")),
-		Secret: 	   os.Getenv("APP_SECRET"),
+		AlphaVantageKey: 	   os.Getenv("ALPHA_VANTAGE_KEY"),
 	}
 }
 
@@ -125,6 +125,6 @@ func (config *Config) trimWhitespace() {
 // String returns a string representation of the config.
 func (config *Config) String() string {
 	return fmt.Sprintf(
-		"Name: %v, Port: %v, LogLevel: %v, Secret: %v, AccessLog: %v, ",
-		config.Name, config.Port, config.LogLevel, config.Secret, config.AccessLog)
+		"Name: %v, Port: %v, LogLevel: %v, AlphaVantageKey: %v, AccessLog: %v, ",
+		config.Name, config.Port, config.LogLevel, config.AlphaVantageKey, config.AccessLog)
 }
