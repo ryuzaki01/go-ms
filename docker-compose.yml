@@ -1,17 +1,26 @@
-stock:
-  build: stock/
-  entrypoint: go run /go/src/github.com/ryuzaki01/go-ms/stock/main.go
-  ports:
-    - "3000:80"
-  environment:
-    - APP_SECRET
-  container_name: 'stock'
+networks:
+  isolation-network:
+    driver: bridge
 
-encrypt:
-  build: encrypt/
-  entrypoint: go run /go/src/github.com/ryuzaki01/go-ms/encrypt/main.gos
-  ports:
-    - "3001:80"
-  environment:
-    - APP_SECRET
-  container_name: 'encrypt'
+services:
+  stock:
+    build: stock/
+    entrypoint: go run /go/src/github.com/ryuzaki01/go-ms/stock/main.go
+    ports:
+      - "3000:80"
+    environment:
+      - APP_SECRET
+    container_name: 'stock'
+    networks:
+      - isolation-network
+
+  encrypt:
+    build: encrypt/
+    entrypoint: go run /go/src/github.com/ryuzaki01/go-ms/encrypt/main.gos
+    ports:
+      - "3001"
+    environment:
+      - APP_SECRET
+    container_name: 'encrypt'
+    networks:
+      - isolation-network
