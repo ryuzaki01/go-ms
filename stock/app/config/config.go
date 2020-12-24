@@ -18,7 +18,7 @@ func defaultConfig() Config {
 		Port:          3000,
 		LogLevel:      4,
 		AccessLog:     true,
-		AlphaVantageKey: "",
+		AlphaVantageKey: "UCFFIYU7BU7Z5ANJ",
 	}
 }
 

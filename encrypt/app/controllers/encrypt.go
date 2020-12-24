@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"github.com/ryuzaki01/go-ms/stock/app/logs"
 	"io"
 	"net/http"
 	"net/url"
@@ -17,6 +18,7 @@ type encrypt struct {
 
 func (c encrypt) Post(url string, queries url.Values, body io.Reader) (util.APIStatus, interface{}) {
 	response := "test"
+	logs.Info.Print(body)
 
 	return util.Success(http.StatusOK), response
 }

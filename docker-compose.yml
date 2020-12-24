@@ -18,7 +18,7 @@ services:
     build: encrypt/
     entrypoint: go run /go/src/github.com/ryuzaki01/go-ms/encrypt/main.go
     ports:
-      - "3001"
+      - "3001:3001"
     environment:
       - APP_SECRET
     container_name: 'encrypt'
