@@ -95,21 +95,23 @@ func APIResourceHandler(APIResource APIResource) http.HandlerFunc {
 		var status APIStatus
 		var data interface{}
 
+		logs.Info.Printf("Method : %v", r.Method)
+
 		switch r.Method {
-		case options:
-			status, data = APIResource.Options(r.URL.Path, r.Form, reader)
-		case get:
-			status, data = APIResource.Get(r.URL.Path, r.Form, reader)
-		case post:
-			status, data = APIResource.Post(r.URL.Path, r.Form, reader)
-		case put:
-			status, data = APIResource.Put(r.URL.Path, r.Form, reader)
-		case patch:
-			status, data = APIResource.Patch(r.URL.Path, r.Form, reader)
-		case delete:
-			status, data = APIResource.Delete(r.URL.Path, r.Form, reader)
-		default:
-			w.WriteHeader(http.StatusMethodNotAllowed)
+			case options:
+				status, data = APIResource.Options(r.URL.Path, r.Form, reader)
+			case get:
+				status, data = APIResource.Get(r.URL.Path, r.Form, reader)
+			case post:
+				status, data = APIResource.Post(r.URL.Path, r.Form, reader)
+			case put:
+				status, data = APIResource.Put(r.URL.Path, r.Form, reader)
+			case patch:
+				status, data = APIResource.Patch(r.URL.Path, r.Form, reader)
+			case delete:
+				status, data = APIResource.Delete(r.URL.Path, r.Form, reader)
+			default:
+				w.WriteHeader(http.StatusMethodNotAllowed)
 			return
 		}
 

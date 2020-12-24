@@ -24,7 +24,7 @@ func init() {
 // RequestGetParam retrives a request parameter
 func RequestGetParam(r *http.Request, key string) (string, bool) {
 	value := r.URL.Query().Get(key)
-	return value, (len(value) != 0)
+	return value, len(value) != 0
 }
 
 // Chain enables middleware chaining
