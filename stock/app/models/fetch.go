@@ -30,6 +30,7 @@ func fetch(method, url, req string, res interface{}) error {
 func request(method, endpoint string, headers *map[string]string, reqBody string, resJSON interface{}) (resString string, err error) {
 	req, _ := http.NewRequest(method, endpoint, strings.NewReader(reqBody))
 
+	req.Header.Add("Content-Type", "application/json")
 	req.Header.Add("Accept-Encoding", "gzip")
 	if headers != nil {
 		for key, value := range *headers {
