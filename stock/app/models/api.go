@@ -14,11 +14,13 @@ type daoEncrypt struct {
 //  @return response string
 func GetStock(symbol string) string {
 	cfg := config.NewConfig()
-	response := ""
-	if fetch("GET", "https://www.alphavantage.co/query?function=OVERVIEW&symbol=" + symbol + "&apikey=" + cfg.AlphaVantageKey, "", response) == nil {
-		return response
+	response, err := request("GET", "https://www.alphavantage.co/query?function=OVERVIEW&symbol=" + symbol + "&apikey=" + cfg.AlphaVantageKey, nil, "", nil)
+
+	if err != nil {
+		return "{\"error\": \"Not Found\"}"
 	}
-	return "not found"
+
+	return response
 }
 
 // PostEncrypt retrieves encrypted string

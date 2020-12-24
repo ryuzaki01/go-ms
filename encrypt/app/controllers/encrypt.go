@@ -18,7 +18,7 @@ type encrypt struct {
 }
 
 type dataRequest struct {
-	Data string    `json:"data"`
+	Data string    `json:"data,string"`
 }
 
 func (c encrypt) Post(url string, queries url.Values, body io.Reader) (util.APIStatus, interface{}) {

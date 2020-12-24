@@ -25,11 +25,11 @@ func (c stock) Get(url string, queries url.Values, body io.Reader) (util.APIStat
 			return models.GetStock(symbol)
 		})
 		result := stockFuture.Await()
-		resultStr := fmt.Sprintf("\"{\"data\" : \"%v\"}", result)
+		encryptRequest := fmt.Sprintf("\"{\"data\" : \"%v\"}", result)
 
 		encryptFuture := async.Exec(func() interface{} {
-			logs.Info.Print(resultStr)
-			return models.PostEncrypt(resultStr)
+			logs.Info.Print(encryptRequest)
+			return models.PostEncrypt(encryptRequest)
 		})
 		encryptedResult := encryptFuture.Await()
 
