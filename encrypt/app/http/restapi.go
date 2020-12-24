@@ -95,8 +95,6 @@ func APIResourceHandler(APIResource APIResource) http.HandlerFunc {
 		var status APIStatus
 		var data interface{}
 
-		logs.Info.Printf("Method : %v", r.Method)
-
 		switch r.Method {
 			case options:
 				status, data = APIResource.Options(r.URL.Path, r.Form, reader)

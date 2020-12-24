@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"github.com/ryuzaki01/go-ms/stock/app/async"
 	util "github.com/ryuzaki01/go-ms/stock/app/http"
-	"github.com/ryuzaki01/go-ms/stock/app/logs"
 	"github.com/ryuzaki01/go-ms/stock/app/models"
 	"io"
 	"net/http"
@@ -25,10 +24,9 @@ func (c stock) Get(url string, queries url.Values, body io.Reader) (util.APIStat
 			return models.GetStock(symbol)
 		})
 		result := stockFuture.Await()
-		encryptRequest := fmt.Sprintf("\"{\"data\" : \"%v\"}", result)
+		encryptRequest := fmt.Sprintf("%v", result)
 
 		encryptFuture := async.Exec(func() interface{} {
-			logs.Info.Print(encryptRequest)
 			return models.PostEncrypt(encryptRequest)
 		})
 		encryptedResult := encryptFuture.Await()
