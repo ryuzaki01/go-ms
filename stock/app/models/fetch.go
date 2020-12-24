@@ -10,10 +10,6 @@ import (
 	"github.com/ryuzaki01/go-ms/stock/app/misc"
 )
 
-const (
-	apiEndpoint = "http://encrypt"
-)
-
 // APIHeader represents API response header
 type APIHeader struct {
 	Status  string `json:"status"`
@@ -25,8 +21,8 @@ type APIResponse struct {
 	Header APIHeader `json:"header"`
 }
 
-func fetch(method, target, req string, res interface{}) error {
-	_, err := request(method, apiEndpoint+target, nil, req, res)
+func fetch(method, url, req string, res interface{}) error {
+	_, err := request(method, url, nil, req, res)
 	return err
 }
 
