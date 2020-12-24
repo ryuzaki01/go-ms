@@ -6,5 +6,5 @@ type Config struct {
 	Port          uint16
 	LogLevel      int
 	AccessLog     bool
-	Secret string `trim:"true"`
+	AESKey 		  string `trim:"true"`
 }

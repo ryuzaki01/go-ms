@@ -24,7 +24,7 @@ https://www.alphavantage.co/support/#api-key
 ### 3. Set environment variables
 
 ```
-export SECRET=yourappsecret!@
+export APP_AES_KEY=9a576e02a3beca3a64f2a1b5fa9061ea7d14716bf205d1b7c256ff7ef511a796
 export ALPHA_VANTAGE_KEY=
 ```
 

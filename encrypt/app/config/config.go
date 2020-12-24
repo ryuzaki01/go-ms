@@ -18,7 +18,7 @@ func defaultConfig() Config {
 		Port:          3001,
 		LogLevel:      4,
 		AccessLog:     true,
-		Secret: "",
+		AESKey: "9a576e02a3beca3a64f2a1b5fa9061ea7d14716bf205d1b7c256ff7ef511a796",
 	}
 }
 
@@ -44,7 +44,7 @@ func environmentConfig() Config {
 		Port:          misc.ParseUint16(os.Getenv("APP_PORT")),
 		LogLevel:      misc.Atoi(os.Getenv("APP_LOG_LEVEL")),
 		AccessLog:     misc.ParseBool(os.Getenv("APP_ACCESS_LOG")),
-		Secret: 	   os.Getenv("APP_SECRET"),
+		AESKey: 	   os.Getenv("APP_AES_KEY"),
 	}
 }
 
@@ -125,6 +125,6 @@ func (config *Config) trimWhitespace() {
 // String returns a string representation of the config.
 func (config *Config) String() string {
 	return fmt.Sprintf(
-		"Name: %v, Port: %v, LogLevel: %v, Secret: %v, AccessLog: %v, ",
-		config.Name, config.Port, config.LogLevel, config.Secret, config.AccessLog)
+		"Name: %v, Port: %v, LogLevel: %v, AESKey: %v, AccessLog: %v, ",
+		config.Name, config.Port, config.LogLevel, config.AESKey, config.AccessLog)
 }
