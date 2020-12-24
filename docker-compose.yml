@@ -9,7 +9,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - APP_SECRET
+      - ALPHA_VANTAGE_KEY
     container_name: 'stock'
     networks:
       - isolation-network
@@ -20,7 +20,7 @@ services:
     ports:
       - "3001:3001"
     environment:
-      - APP_SECRET
+      - APP_AES_KEY
     container_name: 'encrypt'
     networks:
       - isolation-network
