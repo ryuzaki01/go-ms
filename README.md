@@ -36,3 +36,10 @@ docker-compose up -d
 ```
 
 ### 5. Access with a browser (specify the IP address of the VM)
+
+## Developer Notes (Challenges)
+
+- What I think the hardest part while I was doing this project is, JSON operation, Parsing a huge json file would become a hard work
+- Second is async function was pretty inconvenient, even thought I have created a helper for that it's still not good enough, problem is when we use async to fetch string, and then that string is used for another function param, the async function is returning interface instead of string, so we have to convert it to string
+- http request operation a bit hard to be done if we don't use library
+- found a weird thing in http request operation, if we do http request with method "POST" and we have an endpoint that have the trailing slash removed, ex: http://encrypt:3001/encypt the router still take it as a "GET" method
