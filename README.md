@@ -37,6 +37,8 @@ docker-compose up -d
 
 ### 5. Access with a browser (specify the IP address of the VM)
 
+http://localhost:3000/symbol/TSLA
+
 ## Developer Notes (Challenges)
 
 - What I think the hardest part while I was doing this project is, JSON operation, Parsing a huge json file would become a hard work
